@@ -1,0 +1,16 @@
+
+body{
+    margin:0px;
+    display: flex;
+
+}
+.input-container{
+    padding:10px;
+    margin: 40px auto;
+    background-color:grey;
+}
+
+#btnEnviar{
+    margin-top:5px;
+    width:100%;
+}
