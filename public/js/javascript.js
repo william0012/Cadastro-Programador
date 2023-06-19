@@ -1,4 +1,39 @@
 var xmlHttp = new XMLHttpRequest;
+const lista = document.getElementById('results')
+function requestData(){
+    
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 & xmlHttp.status==200){
+            dados = xmlHttp.responseText
+            dados = JSON.parse(dados)
+            dados.forEach(element=>{
+                let div = document.createElement('div')
+                let nome = document.createElement('span')
+                nome.innerText=element.name
+                let javascript = document.createElement('span')
+                javascript.innerText=element.javascript
+                let java = document.createElement('span')
+                java.innerText=element.java
+                let python = document.createElement('span')
+                python.innerText=element.python
+
+                div.appendChild(nome)
+                div.appendChild(javascript)
+                div.appendChild(java)
+                div.appendChild(python)
+                lista.appendChild(div)
+                return div
+            
+            })
+           
+            
+            console.log(xmlHttp.responseText)
+        }
+    }
+    xmlHttp.open('GET','http://localhost:5000/retrieveProgrammer')
+    xmlHttp.setRequestHeader("Content-type", "application/json");
+    xmlHttp.send()
+}
 function enviar(){
     const name= document.getElementById('name').value
     const javascript = document.getElementById('javascript').checked
@@ -11,7 +46,7 @@ function enviar(){
         javascript: javascript 
     }
     xmlHttp.onreadystatechange = function(){
-        if(xmlHttp.status >= 400 & xmlHttp.status <-500){
+        if(xmlHttp.status >= 400 & xmlHttp.status <500){
             console.log(`Houve um erro com a sua requisição.(${xmlHttp.status}) ${xmlHttp.statusText} `)
         }
         if(xmlHttp.status >= 500){

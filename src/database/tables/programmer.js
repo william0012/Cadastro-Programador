@@ -1,5 +1,5 @@
 const sequelize =  require('sequelize')
-const database = require('../db')
+const database = require('../db.js')
 
 
 const programmer = database.define('programar',{
@@ -11,7 +11,7 @@ const programmer = database.define('programar',{
     },
     name: {
         type: sequelize.STRING,
-        allowNull:false,
+        allowNull:false
     },
     javascript:{
         type: sequelize.BOOLEAN,

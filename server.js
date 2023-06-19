@@ -8,6 +8,16 @@ app.use(express.static('./public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+function syncDb(){
+    const database = require('./src/database/db')
+    try {
+        database.sync();
+        console.log("Database successfully sync")
+    } catch (error) {
+        console.log(`Ocorreu um erro ${error}`);
+    }
+}
+syncDb();
 app.get('/syncDatabase', async (req, res) => {
     const database = require('./database/db')
     try {
@@ -39,7 +49,6 @@ const validateProperties = (properties, params, fn)=>{
 }
 app.post('/createProgrammer', async (req, res) => {
     params = req.body
-    console.log(params)
   try{
     const properties = ['name', 'python', 'java', 'javascript']
 
@@ -57,7 +66,6 @@ app.post('/createProgrammer', async (req, res) => {
         javascript: params.javascript,
         java: params.java
     })
-    console.log(newProgrammer)
     res.send(newProgrammer)
   }catch(error){
     res.send(error)
