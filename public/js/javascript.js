@@ -1,7 +1,8 @@
 var xmlHttp = new XMLHttpRequest;
 const lista = document.getElementById('results')
+window.onload=requestData();
 function requestData(){
-    
+    lista.innerHTML=""
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState == 4 & xmlHttp.status==200){
             dados = xmlHttp.responseText
@@ -26,6 +27,7 @@ function requestData(){
                 div.appendChild(javascript)
                 div.appendChild(java)
                 div.appendChild(python)
+                
                 lista.appendChild(div)
                 return div
             
@@ -70,4 +72,5 @@ function enviar(){
     xmlHttp.setRequestHeader("Content-type", "application/json");
     xmlHttp.send(dados)
     console.log(`${name} , Javascript:${javascript}, Java:${java}, Python:${python}`)
+    requestData()
 }

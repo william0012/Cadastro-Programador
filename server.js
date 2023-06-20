@@ -4,6 +4,7 @@ const port = 5000;
 const bodyParser = require('body-parser')
 const programmer = require('./src/database/tables/programmer')
 
+
 app.use(express.static(__dirname+'/public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
