@@ -8,13 +8,18 @@ function requestData(){
             dados = JSON.parse(dados)
             dados.forEach(element=>{
                 let div = document.createElement('div')
+                div.classList.add('result-item')
                 let nome = document.createElement('span')
+                nome.classList.add('result-name')
                 nome.innerText=element.name
                 let javascript = document.createElement('span')
+                javascript.classList.add('result-javascript')
                 javascript.innerText=element.javascript
                 let java = document.createElement('span')
+                java.classList.add('result-java')
                 java.innerText=element.java
                 let python = document.createElement('span')
+                python.classList.add('result-python')
                 python.innerText=element.python
 
                 div.appendChild(nome)

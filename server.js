@@ -28,7 +28,8 @@ app.get('/syncDatabase', async (req, res) => {
     }
 })
 app.get('/', (req, res) => {
-    res.sendFile('/public', { root: __dirname })
+ 
+    res.sendFile('/index.html', { root: __dirname })
 })
 const validateProperties = (properties, params, fn)=>{
     try {
